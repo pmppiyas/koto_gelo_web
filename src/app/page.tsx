@@ -1,6 +1,7 @@
 import React from "react";
 import { HeroSection } from "@/components/sections/hero-section";
 import { FeaturesSection } from "@/components/sections/features-section";
+import { AdvantagesSection } from "@/components/sections/advantages-section";
 import { siteConfig } from "@/config/site";
 
 export default function HomePage() {
@@ -30,9 +31,11 @@ export default function HomePage() {
       {/* 3. Features Section */}
       <FeaturesSection />
 
+      {/* 4. Advantages & Comparison Section */}
+      <AdvantagesSection />
+
       {/* Upcoming Section Anchors */}
       <div id="how-it-works" className="scroll-mt-24" />
-      <div id="advantages" className="scroll-mt-24" />
       <div id="technologies" className="scroll-mt-24" />
       <div id="download" className="scroll-mt-24" />
     </div>
