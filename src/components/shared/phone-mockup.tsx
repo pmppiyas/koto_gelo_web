@@ -64,7 +64,7 @@ export function PhoneMockup() {
             <div className="flex items-center gap-1.5">
               <span>5G</span>
               <div className="h-2 w-4 rounded-sm border border-slate-400 p-[1px]">
-                <div className="h-full w-3/4 rounded-2xs bg-emerald-400" />
+                <div className="h-full w-3/4 rounded-[1px] bg-emerald-400" />
               </div>
             </div>
           </div>
@@ -156,7 +156,7 @@ export function PhoneMockup() {
                 onClick={() => setActiveTab("all")}
                 className={`px-2.5 py-1 text-[10px] font-bold rounded-md transition ${
                   activeTab === "all"
-                    ? "bg-primary-600 text-white shadow-xs"
+                    ? "bg-primary-600 text-white shadow-sm"
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
@@ -166,7 +166,7 @@ export function PhoneMockup() {
                 onClick={() => setActiveTab("group")}
                 className={`px-2.5 py-1 text-[10px] font-bold rounded-md transition ${
                   activeTab === "group"
-                    ? "bg-primary-600 text-white shadow-xs"
+                    ? "bg-primary-600 text-white shadow-sm"
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >

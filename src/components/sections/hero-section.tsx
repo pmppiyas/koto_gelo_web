@@ -124,7 +124,7 @@ export function HeroSection() {
                   {["#6366F1", "#10B981", "#F59E0B", "#EC4899"].map((color, idx) => (
                     <div
                       key={idx}
-                      className="h-6 w-6 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-[9px] font-bold text-white shadow-xs"
+                      className="h-6 w-6 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center text-[9px] font-bold text-white shadow-sm"
                       style={{ backgroundColor: color }}
                     >
                       {String.fromCharCode(65 + idx)}

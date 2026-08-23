@@ -1,16 +1,7 @@
 import React from "react";
 import { HeroSection } from "@/components/sections/hero-section";
-import { Card, CardContent } from "@/components/ui/card";
+import { FeaturesSection } from "@/components/sections/features-section";
 import { siteConfig } from "@/config/site";
-import {
-  Sparkles,
-  Zap,
-  Users,
-  PieChart,
-  ShieldCheck,
-  Smartphone,
-  ArrowRight,
-} from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -18,7 +9,7 @@ export default function HomePage() {
       {/* 1. High Impact Hero Section */}
       <HeroSection />
 
-      {/* Stats Bar */}
+      {/* 2. Stats Highlight Bar */}
       <section className="relative z-10 py-10 border-y border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -36,8 +27,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section Placeholders prepared for the next tasks */}
-      <div id="features" className="scroll-mt-24" />
+      {/* 3. Features Section */}
+      <FeaturesSection />
+
+      {/* Upcoming Section Anchors */}
       <div id="how-it-works" className="scroll-mt-24" />
       <div id="advantages" className="scroll-mt-24" />
       <div id="technologies" className="scroll-mt-24" />

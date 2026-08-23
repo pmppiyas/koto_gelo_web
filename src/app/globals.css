@@ -71,12 +71,25 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary-500/20 selection:text-primary-700 dark:selection:text-primary-300;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
   html {
     scroll-behavior: smooth;
   }
+}
+
+/* Custom Text Selection */
+::selection {
+  background-color: rgba(99, 102, 241, 0.25);
+  color: #4338ca;
+}
+
+.dark ::selection {
+  background-color: rgba(99, 102, 241, 0.35);
+  color: #c7d2fe;
 }
 
 /* Custom Scrollbar */
