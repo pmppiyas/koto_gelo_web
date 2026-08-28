@@ -313,5 +313,5 @@ KotoGelo Web is natively optimized for deployment on **Vercel**:
 - **License:** Proprietary / All Rights Reserved
 
 <div align="center">
-  <sub>Built with ❤️ to make personal finance & shared group budgeting effortless and enjoyable.</sub>
+  <sub>Built with ❤️ to make personal finance & shared group budgeting effortless and enjoyable tool.</sub>
 </div>
