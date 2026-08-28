@@ -9,26 +9,47 @@ import {
   Download,
   Menu,
   X,
-  Wallet,
-  Sparkles,
   ChevronRight,
-  ShieldCheck,
 } from "lucide-react";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
+    const sectionIds = ["features", "how-it-works", "advantages", "technologies", "download"];
+
     const handleScroll = () => {
+      // 1. Header background blur on scroll
       if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
+
+      // 2. Active Section Detection
+      const scrollPosition = window.scrollY + 180;
+      let current = "";
+
+      for (const id of sectionIds) {
+        const element = document.getElementById(id);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            current = id;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(current);
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -37,12 +58,12 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60 shadow-sm shadow-slate-900/5 py-3"
-            : "bg-transparent py-5"
+            ? "bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60 shadow-sm shadow-slate-900/5 py-3"
+            : "bg-transparent py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between h-11">
             {/* Brand Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-primary-600 via-indigo-600 to-emerald-500 p-0.5 shadow-md shadow-primary-600/20 group-hover:shadow-primary-600/40 transition">
@@ -51,26 +72,35 @@ export function Navbar() {
                 </div>
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-                  KotoGelo <span className="text-xs px-1.5 py-0.5 rounded-md bg-primary-500/10 text-primary-600 dark:text-primary-400 font-semibold">কত গেলো?</span>
+                <span className="text-lg font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5 leading-none">
+                  KotoGelo <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-primary-500/10 text-primary-600 dark:text-primary-400 font-semibold">কত গেলো?</span>
                 </span>
-                <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 hidden sm:inline">
+                <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 hidden sm:inline mt-0.5">
                   Smart Expense & Bill Splitter
                 </span>
               </div>
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex items-center gap-1 bg-slate-100/70 dark:bg-slate-900/70 p-1.5 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 backdrop-blur-md">
-              {siteConfig.navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition"
-                >
-                  {item.label}
-                </Link>
-              ))}
+            {/* Desktop Navigation Links with Fixed Height (Zero Layout Shift) */}
+            <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 dark:bg-slate-900/80 p-1 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 backdrop-blur-md shadow-inner">
+              {siteConfig.navItems.map((item) => {
+                const sectionKey = item.href.replace("#", "");
+                const isActive = activeSection === sectionKey;
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`h-9 px-3.5 rounded-xl text-xs sm:text-sm font-medium flex items-center justify-center border transition-colors duration-150 select-none ${
+                      isActive
+                        ? "border-primary-500/25 dark:border-primary-400/30 bg-primary-500/10 dark:bg-primary-500/20 text-primary-700 dark:text-primary-300 font-semibold"
+                        : "border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-800/60"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Desktop CTA Action */}
@@ -79,7 +109,7 @@ export function Navbar() {
                 onClick={() => setIsDownloadModalOpen(true)}
                 variant="gradient"
                 size="default"
-                className="gap-2"
+                className="gap-2 h-10"
               >
                 <Download className="h-4 w-4" />
                 <span>Download App</span>
@@ -100,18 +130,27 @@ export function Navbar() {
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-2xl px-6 py-5 space-y-4 animate-in slide-in-from-top-2 duration-200">
-            <nav className="flex flex-col space-y-2">
-              {siteConfig.navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-between p-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900"
-                >
-                  <span>{item.label}</span>
-                  <ChevronRight className="h-4 w-4 text-slate-400" />
-                </Link>
-              ))}
+            <nav className="flex flex-col space-y-1.5">
+              {siteConfig.navItems.map((item) => {
+                const sectionKey = item.href.replace("#", "");
+                const isActive = activeSection === sectionKey;
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex items-center justify-between p-3 rounded-xl text-sm font-semibold border transition ${
+                      isActive
+                        ? "border-primary-500/25 bg-primary-500/10 text-primary-600 dark:text-primary-300"
+                        : "border-transparent text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900"
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    <ChevronRight className="h-4 w-4 text-slate-400" />
+                  </Link>
+                );
+              })}
             </nav>
             <div className="pt-2">
               <Button

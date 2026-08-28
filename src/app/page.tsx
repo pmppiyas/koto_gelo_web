@@ -4,6 +4,7 @@ import { FeaturesSection } from "@/components/sections/features-section";
 import { HowItWorksSection } from "@/components/sections/how-it-works-section";
 import { AdvantagesSection } from "@/components/sections/advantages-section";
 import { TechStackSection } from "@/components/sections/tech-stack-section";
+import { DownloadSection } from "@/components/sections/download-section";
 import { siteConfig } from "@/config/site";
 
 export default function HomePage() {
@@ -42,8 +43,8 @@ export default function HomePage() {
       {/* 6. Technologies / Tech Stack Section */}
       <TechStackSection />
 
-      {/* Upcoming Download Section Anchor */}
-      <div id="download" className="scroll-mt-24" />
+      {/* 7. Download & FAQ Section */}
+      <DownloadSection />
     </div>
   );
 }
