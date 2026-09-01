@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { Download, Smartphone, QrCode, X, CheckCircle2, Apple, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -31,8 +32,14 @@ export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
         </button>
 
         <div className="text-center mb-6">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-primary-600 to-emerald-500 text-white mb-3 shadow-lg shadow-primary-600/30">
-            <Smartphone className="h-6 w-6" />
+          <div className="relative h-14 w-14 mx-auto mb-3">
+            <Image
+              src="/logo.png"
+              alt="KotoGelo App Icon"
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-2xl object-contain shadow-lg shadow-primary-600/30"
+            />
           </div>
           <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
             Download KotoGelo App

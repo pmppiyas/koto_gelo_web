@@ -1,0 +1,32 @@
+{
+  "name": "KotoGelo - Smart Expense & Mess Tracker",
+  "short_name": "KotoGelo",
+  "description": "দৈনিক খরচের নিখুঁত হিসাব ও মেস বিল ম্যানেজমেন্ট অ্যাপ।",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#2563EB",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48 32x32 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["finance", "productivity", "utilities"],
+  "lang": "bn",
+  "dir": "ltr"
+}

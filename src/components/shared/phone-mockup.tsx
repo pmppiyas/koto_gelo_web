@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   Wallet,
   TrendingDown,
@@ -72,10 +73,14 @@ export function PhoneMockup() {
           {/* App Header */}
           <div className="px-5 pt-3 pb-3 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-primary-600 to-emerald-500 p-0.5 flex items-center justify-center shadow-md shadow-primary-600/30">
-                <div className="h-full w-full bg-slate-900 rounded-[10px] flex items-center justify-center">
-                  <span className="text-xs font-black text-white">ক</span>
-                </div>
+              <div className="relative h-9 w-9 shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="KotoGelo"
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 rounded-xl object-contain shadow-md shadow-primary-600/30"
+                />
               </div>
               <div>
                 <p className="text-[10px] text-slate-400 font-medium">স্বাগতম, তানভীর 👋</p>
