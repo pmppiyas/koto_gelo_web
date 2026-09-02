@@ -73,9 +73,11 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: "/logo.png",
+        url: `${siteConfig.url}/logo.png`,
+        secureUrl: `${siteConfig.url}/logo.png`,
         width: 512,
         height: 512,
+        type: "image/png",
         alt: `${siteConfig.name} Logo`,
       },
     ],
@@ -87,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} (${siteConfig.banglaName}) - ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: ["/logo.png"],
+    images: [`${siteConfig.url}/logo.png`],
     creator: "@kotogelo",
     site: "@kotogelo",
   },
@@ -180,6 +182,12 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <meta property="og:image" content={`${siteConfig.url}/logo.png`} />
+        <meta property="og:image:secure_url" content={`${siteConfig.url}/logo.png`} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:image:alt" content="KotoGelo" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

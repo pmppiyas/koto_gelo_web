@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { useReleaseInfo } from "@/hooks/use-release-info";
 import {
   Download,
   Smartphone,
@@ -23,6 +24,7 @@ import {
 } from "lucide-react";
 
 export function DownloadSection() {
+  const { info } = useReleaseInfo();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const faqs = [
@@ -96,7 +98,7 @@ export function DownloadSection() {
                       KotoGelo Android APK
                     </h3>
                     <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold">
-                      Official Stable Release • v1.0.0
+                      Official Stable Release • {info.version}
                     </p>
                   </div>
                 </div>
@@ -114,7 +116,7 @@ export function DownloadSection() {
               <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800 mb-8 text-center">
                 <div>
                   <p className="text-[10px] text-slate-400 font-semibold">ফাইল সাইজ</p>
-                  <p className="text-sm font-black text-slate-900 dark:text-white">~১৪.২ MB</p>
+                  <p className="text-sm font-black text-slate-900 dark:text-white">{info.sizeFormatted}</p>
                 </div>
                 <div className="border-x border-slate-200 dark:border-slate-700">
                   <p className="text-[10px] text-slate-400 font-semibold">অ্যান্ড্রয়েড ভার্সন</p>

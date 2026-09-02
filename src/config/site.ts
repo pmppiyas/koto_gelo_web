@@ -7,8 +7,8 @@ export const siteConfig = {
     "হিসাব রাখা এখন জলের মতো সহজ! Track personal expenses, manage mess and tour bills, visualize monthly spending, and settle debts instantly with KotoGelo.",
   fullDescription:
     "KotoGelo (কত গেলো?) is the smartest, fastest, and most intuitive personal expense tracker and group bill manager in Bangladesh. Easily track daily expenses, manage student mess bachelor meals, tour split costs, analyze spending categories with rich analytics, and settle debts with 100% privacy and offline-first support.",
-  url: "https://kotogelo.app",
-  ogImage: "https://kotogelo.app/logo.png",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://kotogelo.vercel.app",
+  ogImage: "https://kotogelo.vercel.app/logo.png",
   logo: "/logo.png",
   favicon: "/favicon.svg",
   themeColor: "#2563EB",
@@ -39,11 +39,16 @@ export const siteConfig = {
     "Offline Expense Tracker",
     "bKash Nagad Expense Management",
   ],
+  github: {
+    owner: process.env.NEXT_PUBLIC_GITHUB_OWNER || "pmppiyas",
+    repo: process.env.NEXT_PUBLIC_GITHUB_REPO || "koto_gelo_android_application",
+  },
   links: {
-    github: "https://github.com/your-username/kotogelo",
+    github: "https://github.com/pmppiyas/koto_gelo_android_application",
     playstore: "https://play.google.com/store/apps/details?id=com.kotogelo.app",
     appstore: "https://apps.apple.com/app/kotogelo/id123456789",
-    apkDirect: "https://github.com/your-username/kotogelo/releases/latest/download/kotogelo.apk",
+    apkDirect: "/api/download",
+    apkFallback: "https://github.com/pmppiyas/koto_gelo_android_application/releases/latest/download/app-release.apk",
     twitter: "https://twitter.com/kotogelo",
   },
   navItems: [

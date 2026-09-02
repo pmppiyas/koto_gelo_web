@@ -3,8 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
-import { Download, Smartphone, QrCode, X, CheckCircle2, Apple, ExternalLink } from "lucide-react";
+import { Download, Smartphone, QrCode, X, CheckCircle2, Apple, ExternalLink, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useReleaseInfo } from "@/hooks/use-release-info";
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ interface DownloadModalProps {
 }
 
 export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
+  const { info } = useReleaseInfo();
   if (!isOpen) return null;
 
   return (
@@ -45,7 +47,7 @@ export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
             Download KotoGelo App
           </h3>
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-            আপনার ফোনে হিসাব রাখার সেরা অ্যাপটি এখনই ইন্সটল করুন
+            আপনার ফোনে হিসাব রাখার সেরা অ্যাপটি এখনই ইনস্টল করুন
           </p>
         </div>
 
@@ -53,6 +55,7 @@ export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
           {/* Direct APK Download */}
           <a
             href={siteConfig.links.apkDirect}
+            download
             className="flex items-center justify-between p-4 rounded-2xl border-2 border-primary-500/40 bg-primary-50/50 dark:bg-primary-950/30 hover:border-primary-500 transition group"
           >
             <div className="flex items-center gap-3.5">
@@ -62,14 +65,14 @@ export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
               <div className="text-left">
                 <div className="flex items-center gap-2">
                   <h4 className="font-bold text-slate-900 dark:text-white text-sm">
-                    Direct Android APK (Latest v1.0.0)
+                    Direct Android APK ({info.version})
                   </h4>
                   <span className="text-[10px] bg-primary-600 text-white px-2 py-0.5 rounded-full font-semibold">
-                    Recommended
+                    {info.sizeFormatted} • Latest
                   </span>
                 </div>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
-                  ইনস্ট্যান্ট ডাউনলোড করুন • নো সাইনআপ রিকোয়ার্ড
+                  ইনস্ট্যান্ট ডাউনলোড করুন • অটো-আপডেট ব্যাকড
                 </p>
               </div>
             </div>
